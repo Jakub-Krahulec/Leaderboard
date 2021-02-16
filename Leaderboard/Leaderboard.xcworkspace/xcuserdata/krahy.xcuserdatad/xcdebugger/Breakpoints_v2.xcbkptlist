@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "22976F80-6ED4-4DC4-8D90-3D9B511F9442"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A90C9F86-4E7D-421B-9C39-309004E0D858"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Leaderboard/View/LeaderboardTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "preparePositionLabelStyle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A90C9F86-4E7D-421B-9C39-309004E0D858 - 78d9e84f5cf6f65"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Leaderboard.LeaderboardTableViewCell.(preparePositionLabelStyle in _CE5784324010A33C6AEA173F615DA949)() -&gt; ()"
+                  moduleName = "Leaderboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krahy/Desktop/Swift/Leaderboard/Leaderboard/View/LeaderboardTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "99">
+               </Location>
+               <Location
+                  uuid = "A90C9F86-4E7D-421B-9C39-309004E0D858 - da24c7de5731b3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in Leaderboard.LeaderboardTableViewCell.(preparePositionLabelStyle in _CE5784324010A33C6AEA173F615DA949)() -&gt; ()"
+                  moduleName = "Leaderboard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/krahy/Desktop/Swift/Leaderboard/Leaderboard/View/LeaderboardTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
