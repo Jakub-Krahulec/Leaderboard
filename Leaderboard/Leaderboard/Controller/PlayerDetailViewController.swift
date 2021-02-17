@@ -24,7 +24,7 @@ class PlayerDetailViewController: UIViewController {
     
     private var players = [MatchPlayerModel](){
         didSet{
-            collectionView.reloadData()
+            collectionView.reloadSections(IndexSet(integer: 0))
         }
     }
     

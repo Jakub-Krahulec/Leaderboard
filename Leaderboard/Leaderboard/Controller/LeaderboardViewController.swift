@@ -17,7 +17,7 @@ class LeaderboardViewController: UIViewController {
     private var players = [LeaderboardPlayerModel](){
         didSet{
             refreshControl.endRefreshing()
-            tableView.reloadData()
+            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
     }
     
