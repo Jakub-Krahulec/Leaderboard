@@ -17,6 +17,9 @@ struct LeaderboardPlayerModel: Codable{
     var wins: Int
     
     var winPercentage: String{
-        return String(format: "%2.f", (Float(wins) / Float(games)) * 100)
+        if games != 0{
+            return String(format: "%2.f", (Float(wins) / Float(games)) * 100)
+        }
+        return "0"
     }
 }
