@@ -31,6 +31,9 @@ class PlayerDetailViewController: UIViewController {
     private let collectionView: UICollectionView = {
         let col = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
         col.backgroundColor = .clear
+        if let layout = col.collectionViewLayout as? UICollectionViewFlowLayout{
+            layout.minimumLineSpacing = 5
+        }
         return col
     }()
     
@@ -44,6 +47,23 @@ class PlayerDetailViewController: UIViewController {
         let lbl = UILabel()
         return lbl
     }()
+    
+    private let mapImageView: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(systemName: "map")
+        img.tintColor = .brown
+        return img
+    }()
+    
+    private let timeImageView: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(systemName: "timer")
+        img.tintColor = .systemBlue
+        return img
+    }()
+    
+    private let mapStack = CustomStackView()
+    private let timeStack = CustomStackView()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -85,20 +105,20 @@ class PlayerDetailViewController: UIViewController {
     private func updateView(with data: Any?){
         guard let data = data as? LastMatchResponse else {return}
         title = data.last_match.name
-        mapNameLabel.text = "Map type: \(data.last_match.map_type)"
+        mapNameLabel.text = "type \(data.last_match.map_type)"
         
         if let time = data.last_match.roundTime{
-            matchLenLabel.text = "Match time: \(time) minutes"
+            matchLenLabel.text = "\(time) minutes"
         } else{
             matchLenLabel.text = "Match has not finished yet"
         }
     }
     
     private func prepareView(){
-        view.backgroundColor = .white
-
-        prepareMapNameLabelStyle()
-        prepareMatchLenLabelStyle()
+        view.backgroundColor = .backgroundLight
+    
+        prepareMapStackStyle()
+        prepareTimeStackStyle()
         prepareCollectionViewStyle()
     }
     
@@ -109,31 +129,35 @@ class PlayerDetailViewController: UIViewController {
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview().inset(10)
-            make.top.equalTo(matchLenLabel.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(5)
+            make.top.equalTo(timeStack.snp.bottom).offset(5)
             make.bottom.equalTo(view.safeAreaInsets.bottom)
         }
     }
     
-    private func prepareMapNameLabelStyle(){
-        view.addSubview(mapNameLabel)
-        mapNameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-           // make.centerX.equalToSuperview()
-            make.left.equalToSuperview().offset(15)
+    private func prepareMapStackStyle(){
+        mapStack.addArrangedSubview(mapImageView)
+        mapStack.addArrangedSubview(mapNameLabel)
+        
+        view.addSubview(mapStack)
+        mapStack.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(5)
+            make.right.left.equalToSuperview().inset(5)
+            make.height.equalTo(50)
         }
     }
     
-    private func prepareMatchLenLabelStyle(){
-        view.addSubview(matchLenLabel)
-        matchLenLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(mapNameLabel.snp.bottom).offset(20)
-            // make.centerX.equalToSuperview()
-            make.left.equalToSuperview().offset(15)
+    private func prepareTimeStackStyle(){
+        timeStack.addArrangedSubview(timeImageView)
+        timeStack.addArrangedSubview(matchLenLabel)
+        
+        view.addSubview(timeStack)
+        timeStack.snp.makeConstraints { (make) in
+            make.top.equalTo(mapStack.snp.bottom).offset(5)
+            make.right.left.equalToSuperview().inset(5)
+            make.height.equalTo(50)
         }
     }
-    
-    
 }
 
 // MARK: - CollectionView
@@ -152,7 +176,7 @@ extension PlayerDetailViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 110)
+        return CGSize(width: collectionView.frame.width, height: 90)
     }
 }
 

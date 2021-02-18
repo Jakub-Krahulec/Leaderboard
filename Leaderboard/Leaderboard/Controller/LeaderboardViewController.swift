@@ -24,8 +24,9 @@ class LeaderboardViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView()
         table.rowHeight = UITableView.automaticDimension
-        table.separatorInset = .zero
-        table.separatorStyle = .singleLine
+       // table.separatorInset = .zero
+        table.separatorStyle = .none
+        table.backgroundColor = UIColor.backgroundLight
         return table
     }()
     
@@ -72,7 +73,10 @@ class LeaderboardViewController: UIViewController {
     }
     
     private func prepareView(){
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundLight
+        navigationController?.navigationBar.barTintColor = .red
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.backButtonTitle = ""
         title = "Leaderboard"
         
         prepareTableViewStyle()
@@ -87,7 +91,11 @@ class LeaderboardViewController: UIViewController {
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(2.5)
+           // make.bottom.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(2.5)
+            make.right.equalToSuperview().inset(2.5)
         }
     }
 }
@@ -102,6 +110,13 @@ extension LeaderboardViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        
+        cell.backgroundColor = UIColor.white
+        cell.layer.borderColor = UIColor.backgroundLight.cgColor
+        cell.layer.borderWidth = 2.5
+        cell.layer.cornerRadius = 8
+        cell.clipsToBounds = true
+        
         if let cell = cell as? LeaderboardTableViewCell{
             cell.data = players[indexPath.row]            
             return cell

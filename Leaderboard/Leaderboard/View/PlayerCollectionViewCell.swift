@@ -54,15 +54,17 @@ class PlayerCollectionViewCell: UICollectionViewCell {
         nameLabel.text = player.name
         civLabel.text = "Civ: \(player.civ)"
         if let hasWon = player.won{
-            hasWonLabel.text = hasWon ? "Winner" : "Loser"
-            backgroundColor = hasWon ? .systemGreen : .systemRed
+          //  hasWonLabel.text = hasWon ? "Winner" : "Loser"
+            layer.borderColor = hasWon ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
         }
     }
     
     private func prepareView(){
         layer.cornerRadius = 10
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.white.cgColor
         
-        backgroundColor = .lightGray
+        backgroundColor = .white
         prepareNameLabelStyle()
         prepareCivLabelStyle()
         prepareHasWonLabel()
@@ -82,6 +84,7 @@ class PlayerCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(15)
         }
     }
     
@@ -91,7 +94,7 @@ class PlayerCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(civLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview().inset(15)
+          //  make.bottom.equalToSuperview().inset(15)
         }
     }
 }

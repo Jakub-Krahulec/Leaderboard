@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ADFE5B125DDC78200B53B9F /* ColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADFE5B025DDC78200B53B9F /* ColorsExtension.swift */; };
+		2ADFE5B425DDD4D000B53B9F /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADFE5B325DDD4D000B53B9F /* CustomStackView.swift */; };
 		2AEF517825DC25C20070F29F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF517725DC25C20070F29F /* AppDelegate.swift */; };
 		2AEF517A25DC25C20070F29F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF517925DC25C20070F29F /* SceneDelegate.swift */; };
 		2AEF517C25DC25C20070F29F /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEF517B25DC25C20070F29F /* LeaderboardViewController.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2ADFE5B025DDC78200B53B9F /* ColorsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsExtension.swift; sourceTree = "<group>"; };
+		2ADFE5B325DDD4D000B53B9F /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		2AEF517425DC25C20070F29F /* Leaderboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leaderboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AEF517725DC25C20070F29F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2AEF517925DC25C20070F29F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				2AEF51A425DC2F260070F29F /* UIViewControllerExtension.swift */,
+				2ADFE5B025DDC78200B53B9F /* ColorsExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				2AEF518225DC25C50070F29F /* LaunchScreen.storyboard */,
 				2AEF51A125DC29AF0070F29F /* LeaderboardTableViewCell.swift */,
 				2AEF51C125DC43C90070F29F /* PlayerCollectionViewCell.swift */,
+				2ADFE5B325DDD4D000B53B9F /* CustomStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,7 +293,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ADFE5B425DDD4D000B53B9F /* CustomStackView.swift in Sources */,
 				2AEF519F25DC28D70070F29F /* LeaderboardPlayerModel.swift in Sources */,
+				2ADFE5B125DDC78200B53B9F /* ColorsExtension.swift in Sources */,
 				2AEF51B825DC3CE80070F29F /* LastMatchModel.swift in Sources */,
 				2AEF517C25DC25C20070F29F /* LeaderboardViewController.swift in Sources */,
 				2AEF517825DC25C20070F29F /* AppDelegate.swift in Sources */,

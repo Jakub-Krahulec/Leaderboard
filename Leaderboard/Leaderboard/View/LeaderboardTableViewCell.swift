@@ -13,25 +13,29 @@ class LeaderboardTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont.boldSystemFont(ofSize: 25)
+        lbl.font = UIFont.boldSystemFont(ofSize: 20)
+        lbl.textColor = .black
         return lbl
     }()
     
     private let positionLabel: UILabel = {
         let lbl = UILabel()
+        lbl.font = UIFont.boldSystemFont(ofSize: 37)
+        lbl.textColor = UIColor.systemRed.withAlphaComponent(0.3)
         return lbl
     }()
     
     private let ratingLabel: UILabel = {
         let lbl = UILabel()
-        
+        lbl.textColor = UIColor.black.withAlphaComponent(0.8)
+        lbl.font = UIFont.systemFont(ofSize: 15)
         return lbl
     }()
     
-    private let percLabel: UILabel = {
-        let lbl = UILabel()
-        
-        return lbl
+    private let infoStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        return stack
     }()
     
     private let arrowImageView: UIImageView = {
@@ -65,59 +69,44 @@ class LeaderboardTableViewCell: UITableViewCell {
         guard let player = data as? LeaderboardPlayerModel else {return}
         
         nameLabel.text = player.name
-        positionLabel.text = "RANK: \(player.rank)"
-        ratingLabel.text = "RATING: \(player.rating)"
-        percLabel.text = "WINS: \(player.winPercentage)%"
+        positionLabel.text = "\(player.rank)."
+        ratingLabel.text = "RATING: \(player.rating), WINS: \(player.winPercentage)%"
     }
     
     private func prepareView(){
         backgroundColor = .white
         
-        prepareNameLabelStyle()
-        preparePositionLabelStyle()
-        prepareRatingLabelStyle()
-        preparePercLabelStyle()
         prepareArrowImageViewStyle()
+        preparePositionLabelStyle()
+        prepareInfoStackStyle()
+        
     }
     
-    private func prepareNameLabelStyle(){
-        addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview().offset(10)
+    private func prepareInfoStackStyle(){
+        infoStack.addArrangedSubview(nameLabel)
+        infoStack.addArrangedSubview(ratingLabel)
+        
+        addSubview(infoStack)
+        infoStack.snp.makeConstraints { (make) in
+            make.left.equalTo(frame.width / 4)
+            make.right.equalTo(arrowImageView.snp.left).inset(-5)
+            make.top.equalToSuperview().offset(25)
+            make.bottom.equalToSuperview().inset(25)
         }
     }
     
     private func preparePositionLabelStyle(){
         addSubview(positionLabel)
         positionLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-        }
-
-    }
-    
-    private func prepareRatingLabelStyle(){
-        addSubview(ratingLabel)
-        ratingLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.top.equalTo(positionLabel.snp.bottom).offset(10)
-        }
-
-    }
-    
-    private func preparePercLabelStyle(){
-        addSubview(percLabel)
-        percLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(10)
-            make.top.equalTo(ratingLabel.snp.bottom).offset(10)
-            make.bottom.equalToSuperview().inset(10)
+            make.left.equalToSuperview().offset(15)
+            make.centerY.equalToSuperview()
         }
     }
     
     private func prepareArrowImageViewStyle(){
         addSubview(arrowImageView)
         arrowImageView.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().inset(10)
+            make.right.equalToSuperview().inset(15)
             make.centerY.equalToSuperview()
             make.height.equalTo(30)
             make.width.equalTo(15)
